@@ -9,6 +9,7 @@
             <%= link_to '[削除]', task_path(task),
             data: { turbo_method: 'delete', 
             turbo_confirm: '本当に削除してもよろしいですか?'} %>
+            <%= task.updated_at.strftime("%Y-%m-%d %H:%M:%S")  %>
         </span>
         </li>
     <% end %>
