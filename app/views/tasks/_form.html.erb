@@ -1,0 +1,12 @@
+<%= form_with model: @task do |form| %>
+    <p>
+        <%= form.label :やること %><br>
+        <%= form.text_field :title %>
+        <% if @task.errors.any? %>
+            <%= @task.errors.messages[:title][0]%>
+        <% end %>
+    </p>
+    <p>
+        <%= form.submit "作成する" %>
+    </p>
+<% end %>
