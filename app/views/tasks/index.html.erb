@@ -1,7 +1,27 @@
 <h1>今日やること</h1>
+<%= Time.now.strftime("今日は%Y年%m月%d日") %>
+<p id="clock"></p>
 <%= link_to 'タスクの新規作成', new_task_path %>
 <ul>
     <% @task.each do |task| %>
         <%= render 'completed', task: task %>
     <% end %>
 </ul>
+<script>
+set2fig = (num) => {
+  let ret;
+  if( num < 10 ) { ret = "0" + num; }
+  else { ret = num; }
+  return ret;
+}
+
+function showClock2() {
+  var nowTime = new Date();
+  var nowHour = set2fig( nowTime.getHours() );
+  var nowMin  = set2fig( nowTime.getMinutes() );
+  var nowSec  = set2fig( nowTime.getSeconds() );
+  var msg = "現在時刻は、" + nowHour + ":" + nowMin + ":" + nowSec + " です。";
+  document.getElementById("clock").innerHTML = msg;
+}
+setInterval('showClock2()',1000);
+</script>
